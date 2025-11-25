@@ -17,7 +17,7 @@ const Login = () => {
     <div className="page">
       <div className="titleWrap">
         <br />
-        로그인
+        로그인 바부는 성욱이
       </div>
       <div className="contentWrap">
         <div className="inputTitle">이메일 주소</div>
