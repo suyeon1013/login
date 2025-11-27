@@ -15,23 +15,23 @@ const useLogin = () => {
   const allowValid = emailValid && pwValid;
 
   const handleEmail = (e) => {
-    setEmail(e.target.value);
+    const value = e.target.value;
+    setEmail(value);
+
     const regex =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-    if (regex.test(email)) {
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
+
+    setEmailValid(regex.test(value));
   };
 
   const handlePw = (e) => {
-    setPw(e.target.value);
+    const value = e.target.value;
+    setPw(value);
+
     const regex =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
-    if (regex.test(pw)) setPwValid(true);
-    else setPwValid(false);
+    setPwValid(regex.test(value));
   };
 
   const onClickConfirmButton = () => {
