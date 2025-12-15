@@ -17,6 +17,7 @@ const Login = () => {
     <div className="login-page">
       <div className="title-wrap">
         <br />
+
         <h2>LOG IN</h2>
       </div>
       <div className="content-wrap" role="form">
@@ -28,13 +29,6 @@ const Login = () => {
             placeholder="you@example.com"
             value={email}
             onChange={handleEmail}
-          />
-          <input
-            type="password"
-            className="input-txt"
-            placeholder="영문, 숫자, 특수문자 포함 8자 이상"
-            value={pw}
-            onChange={handlePw}
           />
         </div>
         <div className="error-m-wrap">
