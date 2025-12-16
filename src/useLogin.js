@@ -13,7 +13,6 @@ const useLogin = () => {
   const [pwValid, setPwValid] = useState(false);
 
   const allowValid = emailValid && pwValid;
-  console.log(">>????");
 
   const handleEmail = (e) => {
     const value = e.target.value;
@@ -36,6 +35,7 @@ const useLogin = () => {
   };
 
   const onClickConfirmButton = () => {
+    console.log("??");
     if (email === User.email && pw === User.pw) {
       alert("로그인에 성공했습니다.");
     } else {
