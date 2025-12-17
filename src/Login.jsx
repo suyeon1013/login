@@ -6,11 +6,12 @@ const Login = () => {
     allowValid,
     handleEmail,
     handlePw,
-    onClickConfirmButton,
     email,
     pw,
     emailValid,
     pwValid,
+    handleSubmit,
+    handleKeyDown,
   } = useLogin();
 
   return (
@@ -29,6 +30,7 @@ const Login = () => {
             placeholder="you@example.com"
             value={email}
             onChange={handleEmail}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="error-m-wrap">
@@ -46,6 +48,7 @@ const Login = () => {
             placeholder="영문, 숫자, 특수문자 포함 8자 이상"
             value={pw}
             onChange={handlePw}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="error-m-wrap">
@@ -55,7 +58,7 @@ const Login = () => {
         </div>
       </div>
       <div className="button-wrap">
-        <button onClick={onClickConfirmButton} disabled={!allowValid}>
+        <button onClick={handleSubmit} disabled={!allowValid}>
           로그인
         </button>
       </div>

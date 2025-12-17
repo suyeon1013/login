@@ -34,8 +34,7 @@ const useLogin = () => {
     setPwValid(regex.test(value));
   };
 
-  const onClickConfirmButton = () => {
-    console.log("??");
+  const handleSubmit = () => {
     if (email === User.email && pw === User.pw) {
       alert("로그인에 성공했습니다.");
     } else {
@@ -43,15 +42,20 @@ const useLogin = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handleSubmit();
+  };
+
   return {
     allowValid,
     handleEmail,
     handlePw,
-    onClickConfirmButton,
     email,
     pw,
     emailValid,
     pwValid,
+    handleSubmit,
+    handleKeyDown,
   };
 };
 
