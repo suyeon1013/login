@@ -1,8 +1,20 @@
-import React, { useInsertionEffect, userState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import useJoinMember from "./useJoinMember";
+import { Link, useNavigate } from "react-router-dom";
+
+//이메일 주소 선택 칸 추가하기
 
 const Register = () => {
+  const {
+    allowValid,
+    handleEmail,
+    handlePw,
+    email,
+    pw,
+    emailValid,
+    pwValid,
+    handleSubmit,
+    handleKeyDown,
+  } = useJoinMember();
   return (
     <div className="login-page">
       <div className="title-wrap">
@@ -16,15 +28,16 @@ const Register = () => {
           <input
             type="text"
             className="input-txt"
-            placeholder="you@example.com"
-            // value={email}
-            // onChange={handleEmail}
+            placeholder="영문, 숫자 포함 5~16자"
+            value={email}
+            onChange={handleEmail}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="error-m-wrap">
-          {/* {!emailValid && email.length > 0 && (
-            <div>올바른 이메일을 입력해주세요.</div>
-          )} */}
+          {!emailValid && email.length > 0 && (
+            <div>영문, 숫자 포함 5~16자 입력해주세요. </div>
+          )}
         </div>
         <div style={{ marginTop: "26px" }} className="input-title">
           비밀번호
@@ -34,20 +47,23 @@ const Register = () => {
             type="password"
             className="input-txt"
             placeholder="영문, 숫자, 특수문자 포함 8자 이상"
-            // value={pw}
-            // onChange={handlePw}
+            value={pw}
+            onChange={handlePw}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div className="error-m-wrap">
-          {/* {!pwValid && pw.length > 0 && (
+          {!pwValid && pw.length > 0 && (
             <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요. </div>
-          )} */}
+          )}
         </div>
       </div>
-      {/* <hr></hr> */}
       <div className="button-wrap">
-        <button>가입하기</button>
+        <button onClick={handleSubmit} disabled={!allowValid}>
+          가입하기
+        </button>
       </div>
+      <br />
     </div>
   );
 };
