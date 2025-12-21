@@ -7,18 +7,32 @@ const User = {
 
 const useJoinMember = () => {
   const [email, setEmail] = useState("");
+  const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [idValid, setIdValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
+  const [domain, setDomain] = useState("");
 
-  const allowValid = emailValid && pwValid;
+  const allowValid = idValid && pwValid;
 
-  const handleEmail = (e) => {
+  const handleId = (e) => {
     const value = e.target.value;
-    setEmail(value);
+    setId(value);
     //영문+숫자 조합 5~16자
     const regex = /^[a-zA-Z0-9]{5,16}$/;
-    setEmailValid(regex.test(value));
+    setIdValid(regex.test(value));
+  };
+
+  const handlEmail = (e) => {
+    console.log("handlEmail");
+    const value = e.target.value;
+
+    setEmail(value);
+  };
+
+  const handleDomain = (e) => {
+    setDomain(e.target.value);
   };
 
   const handlePw = (e) => {
@@ -41,11 +55,15 @@ const useJoinMember = () => {
 
   return {
     allowValid,
-    handleEmail,
+    handleId,
+    handlEmail,
     handlePw,
+    handleDomain,
     email,
+    domain,
+    id,
     pw,
-    emailValid,
+    idValid,
     pwValid,
     handleSubmit,
     handleKeyDown,

@@ -1,15 +1,18 @@
 import useJoinMember from "./useJoinMember";
 import { Link, useNavigate } from "react-router-dom";
 
-//이메일 주소 선택 칸 추가하기
-
 const Register = () => {
   const {
     allowValid,
+    handleId,
     handleEmail,
     handlePw,
+    handleDomain,
+    domain,
     email,
+    id,
     pw,
+    idValid,
     emailValid,
     pwValid,
     handleSubmit,
@@ -28,14 +31,27 @@ const Register = () => {
           <input
             type="text"
             className="input-txt"
-            placeholder="영문, 숫자 포함 5~16자"
-            value={email}
-            onChange={handleEmail}
+            // placeholder="영문, 숫자 포함 5~16자"
+            value={id}
+            onChange={handleId}
             onKeyDown={handleKeyDown}
           />
+          @
+          <input
+            type="email"
+            className="input-txt"
+            value={domain}
+            onChange={handleDomain}
+          />
+          <select value={domain} onChange={handleDomain}>
+            <option value="naver.com">naver.com</option>
+            <option value="gmail.com">gmail.com</option>
+            <option value="daum.net">daum.net</option>
+            <option value="">직접입력</option>
+          </select>
         </div>
         <div className="error-m-wrap">
-          {!emailValid && email.length > 0 && (
+          {!idValid && id.length > 0 && (
             <div>영문, 숫자 포함 5~16자 입력해주세요. </div>
           )}
         </div>
