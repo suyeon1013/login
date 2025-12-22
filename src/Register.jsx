@@ -42,12 +42,17 @@ const Register = () => {
             className="input-txt"
             value={domain}
             onChange={handleDomain}
+            onKeyDown={handleKeyDown}
           />
-          <select value={domain} onChange={handleDomain}>
+          <select
+            value={domain}
+            onChange={handleDomain}
+            onKeyDown={handleKeyDown}
+          >
+            <option value="">직접입력</option>
             <option value="naver.com">naver.com</option>
             <option value="gmail.com">gmail.com</option>
             <option value="daum.net">daum.net</option>
-            <option value="">직접입력</option>
           </select>
         </div>
         <div className="error-m-wrap">
