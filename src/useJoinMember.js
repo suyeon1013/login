@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const User = {
   email: "", //abc@naver.com
@@ -24,7 +24,7 @@ const useJoinMember = () => {
     setIdValid(regex.test(value));
   };
 
-  const handlEmail = (e) => {
+  const handleEmail = (e) => {
     console.log("handlEmail");
     const value = e.target.value;
 
@@ -60,7 +60,7 @@ const useJoinMember = () => {
   return {
     allowValid,
     handleId,
-    handlEmail,
+    handleEmail,
     handlePw,
     handleDomain,
     email,

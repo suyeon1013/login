@@ -18,6 +18,11 @@ const Register = () => {
     handleSubmit,
     handleKeyDown,
   } = useJoinMember();
+
+  const errorMessage = {
+    id: "영문, 숫자 포함 5~16자",
+    pw: "영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.",
+  };
   return (
     <div className="login-page">
       <div className="title-wrap">
@@ -57,7 +62,8 @@ const Register = () => {
         </div>
         <div className="error-m-wrap">
           {!idValid && id.length > 0 && (
-            <div>영문, 숫자 포함 5~16자 입력해주세요. </div>
+            <div>{errorMessage.id} </div>
+            //<div>영문, 숫자 포함 5~16자 입력해주세요. </div>
           )}
         </div>
         <div style={{ marginTop: "26px" }} className="input-title">
@@ -75,7 +81,8 @@ const Register = () => {
         </div>
         <div className="error-m-wrap">
           {!pwValid && pw.length > 0 && (
-            <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요. </div>
+            <div>{errorMessage.pw}</div>
+            // <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요. </div>
           )}
         </div>
       </div>

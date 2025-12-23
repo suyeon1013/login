@@ -14,6 +14,12 @@ const Login = () => {
     handleKeyDown,
   } = useLogin();
 
+  const errorMessage = {
+    id: "영문, 숫자 포함 5~16자",
+    email: "올바른 이메일을 입력해주세요.",
+    pw: "영문, 숫자, 특수문자 포함 8자 이상 입력해주세요.",
+  };
+
   return (
     <div className="login-page">
       <div className="title-wrap">
@@ -34,9 +40,7 @@ const Login = () => {
           />
         </div>
         <div className="error-m-wrap">
-          {!emailValid && email.length > 0 && (
-            <div>올바른 이메일을 입력해주세요.</div>
-          )}
+          {!emailValid && email.length > 0 && <div>{errorMessage.email}</div>}
         </div>
         <div style={{ marginTop: "26px" }} className="input-title">
           비밀번호
@@ -52,9 +56,7 @@ const Login = () => {
           />
         </div>
         <div className="error-m-wrap">
-          {!pwValid && pw.length > 0 && (
-            <div>영문, 숫자, 특수문자 포함 8자 이상 입력해주세요. </div>
-          )}
+          {!pwValid && pw.length > 0 && <div>{errorMessage.pw}</div>}
         </div>
       </div>
       <div className="button-wrap">
