@@ -75,7 +75,7 @@ const useJoinMember = () => {
     saveUserInfo();
     alert("회원가입이 완료되었습니다.");
     //로그인 페이지 이동
-    // navigate("/");
+    navigate("/");
   };
 
   const handleKeyDown = (e) => {

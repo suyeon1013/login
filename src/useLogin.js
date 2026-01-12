@@ -1,10 +1,5 @@
 import { useState } from "react";
 
-const User = {
-  email: "abc@naver.com",
-  pw: "abc123!!",
-};
-
 const useLogin = () => {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
@@ -13,6 +8,8 @@ const useLogin = () => {
   const [pwValid, setPwValid] = useState(false);
 
   const allowValid = emailValid && pwValid;
+
+  // console.log(JSON.parse(localStorage.getItem("users")));
 
   const handleEmail = (e) => {
     const value = e.target.value;
@@ -35,11 +32,20 @@ const useLogin = () => {
   };
 
   const handleSubmit = () => {
-    if (email === User.email && pw === User.pw) {
-      alert("로그인에 성공했습니다.");
-    } else {
-      alert("등록되지 않은 회원이거나 입력한 값이 일치하지 않습니다.");
+    //유저 정보 가져와 비교
+    const stored = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = stored.find((u) => u.email === email);
+
+    if (!user) {
+      alert("등록되지 않은 이메일입니다.");
+      return;
     }
+    if (user.pw !== pw) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    alert("로그인에 성공했습니다.");
   };
 
   const handleKeyDown = (e) => {
